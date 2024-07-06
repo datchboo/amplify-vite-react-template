@@ -16,7 +16,11 @@ function App() {
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
-  
+
+  function showMessage() {
+    window.confirm("OK?");
+  }
+
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
   }
@@ -25,6 +29,7 @@ function App() {
     <main>
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
+      <button onClick={showMessage}>showMessage</button>
       <ul>
         {todos.map((todo) => (
           <li onClick={() => deleteTodo(todo.id)} key={todo.id}>{todo.content}</li>
